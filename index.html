@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>歡迎搭乘戀愛❤️‍🔥巴士🚌</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    <p class="tip"></p>
+    <form id="google-form" class="contact100-form validate-form">
+      <div class="cont">
+  <div class="form sign-in">
+    <h2>歡迎搭乘戀愛❤️‍🔥巴士🚌</h2>
+    <label>
+      <span>您的姓名</span>
+      <input id="name" name="name" type="text" />
+    </label>
+    <label>
+      <span>綽號</span>
+      <input id="nickname" name="nickname" type="text" />
+    </label>
+    <label>
+      <span>職業</span>
+      <input id="job" name="job" type="text" />
+    </label>
+    <label>
+      <span>理想型</span>
+      <input id="ideal" name="ideal"  type="text" />
+    </label>
+    <label>
+      <span>MBTI</span>
+      <input id="mbti" name="mbti" type="text" />
+    </label>
+    <label>
+    <span>交過幾任</span>  
+        <input id="relationship" name="relationship" type="text" />
+    </label>
+  </div>
+  <div class="sub-cont">
+    <div class="img">
+      <div class="img__text m--up">
+        <h2>下一站，心動</h2>
+        <p>下一位讓你心動的人</p>
+        <p>可能正在前方等你</p>
+      </div>
+      <div class="img__text m--in">
+        <h2>有人正在等你</h2>
+        <p>你的戀愛旅程還沒結束</p>
+        <p>回來看看今天會遇見誰吧</p>
+      </div>
+      <div class="img__btn">
+        <span class="m--up">立即上車</span>
+        <span class="m--in">回到旅程</span>
+      </div>
+    </div>
+    <div class="form sign-up">
+      <label>
+        <span>能接受另一半有異性朋友嗎</span>
+        <input id="acceptfriend" name="acceptfriend" type="text" />
+      </label>
+      <label>
+        <span>戀愛風格</span>
+        <span>( EX:主動出擊 / 慢熟觀察型 / 朋友變情人型 / 看感覺型 / 其它 )</span>
+        <input id="lovestyle" name="lovestyle" type="text" />   
+      </label>
+      <label>
+        <span>不能接受另一半做的事</span>
+        <input id="nonaccept" name="nonaccept"  type="text" />   
+      </label>
+       <label>
+        <span>現場有沒有哪位異性是 你 / 妳 第一眼比較有好感的 請形容他的特質（ EX : 長髮短髮 / 個性 / 任何你觀察到的 ）</span>
+        <input id="appearance" name="appearance" type="text" />   
+      </label>
+       <label>
+        <span>請用三個 tag 形容你 / 妳自己</span>
+        <input id="tags" name="tags" type="text" />   
+      </label>
+      
+      <button type="submit" class="submit">Submit</button>
+    </div>
+  </div>
+      </div>
+    </form>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+$('#google-form').submit(function (e) {
+
+  e.preventDefault();
+
+  $('.submit').prop('disabled', true).text('送出中...');
+
+  if (
+    !$('#name').val() ||
+    !$('#nickname').val() ||
+    !$('#job').val() ||
+    !$('#ideal').val() ||
+    !$('#mbti').val() ||
+    !$('#relationship').val()
+  ) {
+
+    alert('有資訊沒填喔！請再檢查一次！');
+
+    $('.submit').prop('disabled', false).text('Submit');
+
+    return;
+  }
+
+  $.ajax({
+
+    url: "https://docs.google.com/forms/d/e/1FAIpQLSd4yPHhg248azPP6lgVhzSef3DmREEyW5YwkkUBzCayQO7ljg/formResponse",
+
+    data: {
+      "entry.1388650807": $('#name').val(),
+      "entry.1616705074": $('#nickname').val(),
+      "entry.299891395": $('#job').val(),
+      "entry.1605410520": $('#ideal').val(),
+      "entry.990653743": $('#mbti').val(),
+      "entry.313554025": $('#relationship').val(),
+      "entry.2073937795": $('#acceptfriend').val(),
+      "entry.605609704": $('#lovestyle').val(),
+      "entry.232531709": $('#nonaccept').val(),
+      "entry.1644391808": $('#appearance').val(),
+      "entry.2120389988": $('#tags').val(),
+    },
+
+    type: "POST",
+
+    dataType: "xml",
+
+    complete: function () {
+
+      $('#google-form')[0].reset();
+
+      window.location.href = "thank.html";
+
+    }
+  });
+});
+</script>
+</body>
+</html>

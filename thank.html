@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>感謝填寫｜戀愛巴士</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      width:100%;
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:#f3f3f3;
+      font-family:"Helvetica Neue", sans-serif;
+      overflow:hidden;
+    }
+
+    .thank-box{
+      width:420px;
+      padding:60px 45px;
+      background:white;
+      border-radius:28px;
+      text-align:center;
+      box-shadow:0 10px 40px rgba(0,0,0,0.06);
+      animation:fadeUp 1s ease;
+    }
+
+    .emoji{
+      font-size:25px;
+      margin-bottom:20px;
+    }
+
+    h1{
+      font-size:38px;
+      margin-bottom:18px;
+      color:#111;
+      font-weight:700;
+    }
+
+    p{
+      color:#777;
+      line-height:1.8;
+      font-size:17px;
+      margin-bottom:40px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:15px 42px;
+      border-radius:999px;
+      background:#d7b27a;
+      color:white;
+      text-decoration:none;
+      font-size:16px;
+      font-weight:600;
+      transition:0.35s;
+    }
+
+    .btn:hover{
+      transform:translateY(-3px);
+      background:#c89f63;
+      box-shadow:0 10px 20px rgba(215,178,122,0.3);
+    }
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @media(max-width:768px){
+
+      .thank-box{
+        width:90%;
+        padding:50px 30px;
+      }
+
+      h1{
+        font-size:30px;
+      }
+
+      p{
+        font-size:15px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="thank-box">
+
+    <div class="emoji">感謝填寫 🚌❤️</div>
+
+    <p>
+      你的資料已成功送出<br>
+      戀愛巴士正在替你尋找<br>
+      最適合的那位乘客
+    </p>
+
+  </div>
+
+</body>
+</html>
