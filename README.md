@@ -13,16 +13,6 @@
 
 ---
 
-## 🖥️ Demo
-
-GitHub Pages：
-
-```txt
-https://你的帳號.github.io/love-bus
-```
-
----
-
 ## 📂 專案結構
 
 ```bash
@@ -37,83 +27,19 @@ love-bus/
 
 ---
 
-## 🚀 使用方式
-
-### 1. Clone 專案
-
-```bash
-git clone https://github.com/你的帳號/love-bus.git
-```
-
-### 2. 開啟專案
-
-直接打開：
-
-```bash
-index.html
-```
-
-即可在瀏覽器查看。
-
----
-
-## 🌐 GitHub Pages 部署
-
-進入：
-
-```txt
-Settings → Pages
-```
-
-設定：
-
-```txt
-Source → Deploy from a branch
-Branch → main
-Folder → /root
-```
-
-完成後即可透過：
-
-```txt
-https://你的帳號.github.io/love-bus
-```
-
-瀏覽網站。
-
----
-
-## 🛠️ 使用技術
-
-* HTML5
-* CSS3
-* JavaScript
-* GitHub Pages
-
----
-
 ## 📱 RWD 響應式設計
 
 網站已針對：
 
 * Desktop
-* Tablet
 * Mobile
 
 進行版面優化。
 
 ---
 
-## 📌 未來規劃
-
-* [ ] 表單資料串接 Google Sheets
-* [ ] 加入動畫特效
-* [ ] 使用者配對功能
-* [ ] 深色模式
-* [ ] 後台管理系統
-
 ---
 
 ## 👨‍💻 Author
 
-Made with ❤️ by 你的名字
+Made with  by Louis
