@@ -85,7 +85,7 @@ button {
   top: 0;
   width: 900px;
   height: 100%;
-  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/sections-3.jpg');
+  background-image: url('lovebus.jpg');
   background-size: cover;
   transition: transform 1.2s ease-in-out;
 }
@@ -203,7 +203,7 @@ label {
 
 label span {
   font-size: 15px;
-  color: #cfcfcf;
+  color: #36454f;
   text-transform: uppercase;
 }
 
@@ -221,13 +221,13 @@ input {
   margin-top: 15px;
   text-align: center;
   font-size: 12px;
-  color: #cfcfcf;
+  color: #36454f;
 }
 
 .submit {
   margin-top: 40px;
   margin-bottom: 20px;
-  background: #d4af7a;
+  background: #d96b8a;
   text-transform: uppercase;
 }
 
@@ -292,7 +292,7 @@ input {
 
 .radio-group label {
   font-size: 15px;
-  color: #cfcfcf;
+  color: #36454f;
   display: flex;
   align-items: center;
   gap: 4px;
