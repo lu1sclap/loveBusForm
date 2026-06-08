@@ -87,57 +87,68 @@
   <script src="js/main.js"></script>
   <script>
 $('#google-form').submit(function (e) {
+    e.preventDefault();
 
-  e.preventDefault();
+    // 1. 蒐集所有欄位的值，並用 .trim() 去除前後空白
+    const formData = {
+        name: $('#name').val().trim(),
+        nickname: $('#nickname').val().trim(),
+        job: $('#job').val().trim(),
+        ideal: $('#ideal').val().trim(),
+        mbti: $('#mbti').val().trim(),
+        relationship: $('#relationship').val().trim(),
+        acceptfriend: $('#acceptfriend').val().trim(),
+        lovestyle: $('#lovestyle').val().trim(),
+        nonaccept: $('#nonaccept').val().trim(),
+        appearance: $('#appearance').val().trim(),
+        tags: $('#tags').val().trim()
+    };
 
-  $('.submit').prop('disabled', true).text('送出中...');
-
-  if (
-    !$('#name').val() ||
-    !$('#nickname').val() ||
-    !$('#job').val() ||
-    !$('#ideal').val() ||
-    !$('#mbti').val() ||
-    !$('#relationship').val()
-  ) {
-
-    alert('有資訊沒填喔！請再檢查一次！');
-
-    $('.submit').prop('disabled', false).text('Submit');
-
-    return;
-  }
-
-  $.ajax({
-
-    url: "https://docs.google.com/forms/d/e/1FAIpQLSd4yPHhg248azPP6lgVhzSef3DmREEyW5YwkkUBzCayQO7ljg/formResponse",
-
-    data: {
-      "entry.1388650807": $('#name').val(),
-      "entry.1616705074": $('#nickname').val(),
-      "entry.299891395": $('#job').val(),
-      "entry.1605410520": $('#ideal').val(),
-      "entry.990653743": $('#mbti').val(),
-      "entry.313554025": $('#relationship').val(),
-      "entry.2073937795": $('#acceptfriend').val(),
-      "entry.605609704": $('#lovestyle').val(),
-      "entry.232531709": $('#nonaccept').val(),
-      "entry.1644391808": $('#appearance').val(),
-      "entry.2120389988": $('#tags').val(),
-    },
-
-    type: "POST",
-
-    dataType: "xml",
-
-    complete: function () {
-
-      $('#google-form')[0].reset();
-
-      window.location.href = "thank.html";
-
+    // 2. 完整驗證：檢查是否所有欄位都有填寫（包含防止純空白）
+    for (let key in formData) {
+        if (!formData[key]) {
+            alert('還有資訊沒填寫完整，或者偷偷輸入了空白喔！請再檢查一次！');
+            
+            // 貼心小優化：幫使用者把那個「只有空白」的輸入框清空，並把游標聚焦過去
+            $(`#${key}`).val('').focus(); 
+            return; 
+        }
     }
-  });
+
+    // 3. 驗證通過，鎖定按鈕避免重複點擊
+    $('.submit').prop('disabled', true).text('上車中...');
+
+    // 4. 發送資料到 Google 表單
+    $.ajax({
+        url: "https://docs.google.com/forms/d/e/1FAIpQLSd4yPHhg248azPP6lgVhzSef3DmREEyW5YwkkUBzCayQO7ljg/formResponse",
+        data: {
+            "entry.1388650807": formData.name,
+            "entry.1616705074": formData.nickname,
+            "entry.299891395": formData.job,
+            "entry.1605410520": formData.ideal,
+            "entry.990653743": formData.mbti,
+            "entry.313554025": formData.relationship,
+            "entry.2073937795": formData.acceptfriend,
+            "entry.605609704": formData.lovestyle,
+            "entry.232531709": formData.nonaccept,
+            "entry.1644391808": formData.appearance,
+            "entry.2120389988": formData.tags,
+        },
+        type: "POST",
+        dataType: "xml",
+        complete: function () {
+            $('#google-form')[0].reset();
+            window.location.href = "thank.html";
+        }
+    });
+});
+
+// 防止使用者在第一頁輸入時按 Enter 鍵直接觸發表單送出
+$('#google-form').on('keydown', 'input', function(e) {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        return false;
+    }
 });
 </script>
 </body>
